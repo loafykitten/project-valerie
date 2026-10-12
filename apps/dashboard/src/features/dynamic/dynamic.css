@@ -1,0 +1,382 @@
+.dynamic-page {
+  max-width: 1370px;
+}
+.dynamic-page .dynamic-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 24px;
+}
+.dynamic-page .notice {
+  margin-bottom: 18px;
+}
+.dynamic-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+.dynamic-sidebar {
+  display: grid;
+  gap: 22px;
+}
+.dynamic-panel {
+  padding: 24px;
+  min-width: 0;
+}
+.dynamic-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.dynamic-heading h2,
+.dynamic-panel > h2 {
+  margin: 0;
+}
+.dynamic-heading .eyebrow {
+  margin: 0 0 5px;
+}
+.dynamic-intro {
+  margin: 8px 0 22px;
+  color: var(--muted);
+}
+.dynamic-heading .dynamic-intro {
+  margin-bottom: 0;
+}
+.dynamic-heading + .dynamic-intro {
+  margin-top: 12px;
+}
+.dynamic-focus > h2 {
+  margin: 16px 0 12px;
+  font-size: clamp(1.4rem, 2.1vw, 1.9rem);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.dynamic-reason,
+.dynamic-note-body {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.65;
+}
+.dynamic-reason {
+  color: var(--muted);
+}
+.dynamic-focus-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 24px 0;
+}
+.dynamic-focus-dates > div {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 14px;
+}
+.dynamic-focus-dates dt,
+.dynamic-context-counts dt {
+  font-size: 0.83rem;
+  color: var(--dim);
+}
+.dynamic-focus-dates dd {
+  margin: 7px 0 0;
+}
+.dynamic-review-note {
+  padding: 13px 15px;
+  border-left: 2px solid var(--accent);
+  background: var(--field);
+  color: var(--muted);
+}
+.dynamic-focus-list h3 {
+  font-size: 0.93rem;
+  margin: 22px 0 9px;
+}
+.dynamic-focus-list ul {
+  padding-left: 21px;
+  margin: 0;
+  color: var(--muted);
+}
+.dynamic-focus-list li {
+  margin-bottom: 7px;
+  overflow-wrap: anywhere;
+}
+.dynamic-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+.dynamic-save {
+  margin-top: 22px;
+}
+.dynamic-fields {
+  display: grid;
+  gap: 20px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.dynamic-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.dynamic-field > span {
+  font-weight: 600;
+}
+.dynamic-field input,
+.dynamic-field textarea,
+.dynamic-field select {
+  width: 100%;
+  min-width: 0;
+  color: var(--text);
+  background: var(--field);
+  border: 1px solid var(--border-control);
+  border-radius: 9px;
+  padding: 11px 12px;
+  line-height: 1.5;
+}
+.dynamic-field textarea {
+  resize: vertical;
+}
+.dynamic-field small,
+.dynamic-field-hint {
+  color: var(--dim);
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.dynamic-field-hint {
+  margin: 12px 0 0;
+}
+.dynamic-date-fields + .dynamic-field-hint {
+  margin-top: -10px;
+}
+.dynamic-date-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+.dynamic-permission {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  padding: 15px 0;
+  border-top: 1px solid var(--border-soft);
+  cursor: pointer;
+}
+.dynamic-permission input {
+  margin-top: 5px;
+  accent-color: var(--accent);
+}
+.dynamic-permission strong {
+  font-size: 0.9rem;
+}
+.dynamic-permission small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.dynamic-feedback {
+  color: var(--muted);
+}
+.dynamic-page .dynamic-conflict {
+  display: block;
+  margin-top: 20px;
+}
+.dynamic-conflict .dynamic-actions {
+  margin-top: 12px;
+}
+.dynamic-conflict > .text-button {
+  display: inline-block;
+  margin: 12px 16px 0 0;
+}
+.dynamic-saved-version {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 14px;
+  background: var(--field);
+  font-family: inherit;
+  font-size: 0.85rem;
+  margin: 12px 0;
+}
+.dynamic-focus-history {
+  display: grid;
+  gap: 7px;
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+}
+.dynamic-focus-history button {
+  width: 100%;
+  background: transparent;
+  text-align: left;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+.dynamic-focus-history button:hover,
+.dynamic-focus-history button.is-selected {
+  background: var(--field);
+  border-color: var(--border-soft);
+}
+.dynamic-focus-history span,
+.dynamic-focus-history small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.dynamic-focus-history small {
+  margin-top: 5px;
+  color: var(--dim);
+  font-size: 0.78rem;
+}
+.dynamic-current-link {
+  margin-bottom: 18px;
+  text-align: left;
+}
+.dynamic-new-focus {
+  margin-top: 20px;
+}
+.dynamic-notes,
+.dynamic-context {
+  margin-top: 22px;
+}
+.dynamic-note-form {
+  margin-top: 24px;
+}
+.dynamic-note-list,
+.dynamic-context-sources {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+.dynamic-note-list > li,
+.dynamic-context-sources > li {
+  border-top: 1px solid var(--border-soft);
+  padding: 22px 0;
+}
+.dynamic-note-list > li:last-child {
+  padding-bottom: 0;
+}
+.dynamic-note-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px 14px;
+  flex-wrap: wrap;
+}
+.dynamic-note-heading time,
+.dynamic-note-author,
+.dynamic-context-reference,
+.dynamic-prompt-time {
+  font-size: 0.78rem;
+  color: var(--dim);
+}
+.dynamic-note-author {
+  margin: 17px 0 10px;
+}
+.dynamic-note-body {
+  margin: 13px 0;
+}
+.dynamic-note-list .is-superseded .dynamic-note-body {
+  color: var(--dim);
+}
+.dynamic-sources,
+.dynamic-context-details {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-top: 16px;
+}
+.dynamic-sources summary,
+.dynamic-context-details summary,
+.dynamic-conflict summary {
+  cursor: pointer;
+}
+.dynamic-correct-button {
+  margin-top: 15px;
+  font-size: 0.82rem;
+}
+.dynamic-correction {
+  margin-bottom: 18px;
+}
+.dynamic-correction blockquote {
+  border-left: 2px solid var(--border-control);
+  margin: 12px 0;
+  padding-left: 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.dynamic-empty-notes {
+  color: var(--dim);
+  margin: 24px 0 0;
+}
+.dynamic-prompt .prompt-textarea {
+  min-height: 370px;
+}
+.dynamic-context-counts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 22px 0;
+}
+.dynamic-context-counts dd {
+  font-size: 1.4rem;
+  margin: 7px 0 0;
+}
+.dynamic-context-counts small {
+  color: var(--dim);
+  font-size: 0.75rem;
+  display: block;
+  margin-top: 3px;
+}
+.dynamic-field > span small {
+  margin-left: 8px;
+}
+.dynamic-context-sources p {
+  margin: 10px 0;
+  overflow-wrap: anywhere;
+}
+.dynamic-context-reference {
+  overflow-wrap: anywhere;
+}
+.dynamic-context .dynamic-actions .dynamic-prompt-time {
+  margin-left: auto;
+}
+@media (max-width: 1100px) {
+  .dynamic-columns {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  }
+  .dynamic-panel {
+    padding: 20px;
+  }
+  .dynamic-context-counts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 850px) {
+  .dynamic-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .dynamic-panel {
+    padding: 18px;
+  }
+  .dynamic-date-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dynamic-heading .badge {
+    white-space: normal;
+  }
+  .dynamic-actions .button {
+    white-space: normal;
+  }
+  .dynamic-context .dynamic-actions .dynamic-prompt-time {
+    width: 100%;
+    margin-left: 0;
+  }
+}

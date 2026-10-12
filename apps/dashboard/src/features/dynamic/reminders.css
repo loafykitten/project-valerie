@@ -1,0 +1,70 @@
+.reminders-page > .dynamic-heading {
+  margin-bottom: 20px;
+}
+.reminder-main {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+.reminder-editor {
+  margin-bottom: 22px;
+}
+.reminder-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+}
+.reminder-card {
+  border-top: 1px solid var(--border-soft);
+  padding: 22px 0;
+}
+.reminder-card:last-child {
+  padding-bottom: 0;
+}
+.reminder-card h3 {
+  margin-top: 3px;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+.reminder-card .dynamic-intro {
+  margin: 12px 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.reminder-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 25px;
+  margin: 18px 0;
+}
+.reminder-times dt {
+  font-size: 0.78rem;
+  color: var(--dim);
+}
+.reminder-times dd {
+  margin: 6px 0 0;
+  font-size: 0.88rem;
+}
+.reminder-advanced {
+  margin-top: 17px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+.reminder-advanced summary {
+  cursor: pointer;
+}
+.reminder-advanced .dynamic-fields {
+  margin-top: 18px;
+}
+.reminder-deliveries {
+  margin-top: 22px;
+}
+.reminders-page .badge {
+  white-space: normal;
+}
+.reminders-page .dynamic-columns {
+  margin-top: 22px;
+}
+.reminder-editor .dynamic-fields {
+  max-width: 850px;
+}

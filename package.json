@@ -1,0 +1,37 @@
+{
+  "name": "project-valerie",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "bun@1.3.13",
+  "engines": {
+    "bun": ">=1.3.13"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun scripts/dev.ts",
+    "dev:server": "bun --watch apps/server/src/index.ts",
+    "hot:server": "bun --hot apps/server/src/index.ts",
+    "dev:dashboard": "bun run --cwd apps/dashboard dev",
+    "start": "bun apps/server/src/index.ts",
+    "build": "bun run --cwd apps/dashboard build",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "test:hot": "VALERIE_TEST_NETWORK=1 bun test apps/server/test/hot-reload.integration.test.ts",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "check": "bun run typecheck && bun run lint && bun test && bun run build",
+    "doctor": "bun scripts/doctor.ts",
+    "character:inspect": "bun scripts/inspect-character.ts",
+    "character:import": "bun scripts/import-character.ts"
+  },
+  "devDependencies": {
+    "@valerie/core": "workspace:*",
+    "@biomejs/biome": "^2.2.0",
+    "@types/bun": "1.3.13",
+    "typescript": "^5.9.2"
+  }
+}

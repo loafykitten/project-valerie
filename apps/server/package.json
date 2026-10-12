@@ -1,0 +1,10 @@
+{
+  "name": "@valerie/server",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@valerie/core": "workspace:*",
+    "@valerie/inference": "workspace:*",
+    "hono": "^4.9.0"
+  }
+}

@@ -1,0 +1,228 @@
+.heartbeat-page {
+  max-width: 1320px;
+}
+.heartbeat-page > .notice {
+  margin-bottom: 20px;
+}
+.heartbeat-panel,
+.heartbeat-status {
+  padding: 24px;
+}
+.heartbeat-status {
+  margin-bottom: 22px;
+}
+.heartbeat-status-heading,
+.heartbeat-status-footer,
+.heartbeat-actions,
+.heartbeat-run-heading {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+.heartbeat-status-heading {
+  align-items: start;
+}
+.heartbeat-status-heading h2 {
+  margin: 5px 0;
+}
+.heartbeat-status-heading p,
+.heartbeat-intro,
+.heartbeat-status-footer p {
+  color: var(--muted);
+}
+.heartbeat-counts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 24px;
+  margin: 24px 0;
+}
+.heartbeat-counts > div {
+  padding-top: 16px;
+  border-top: 1px solid var(--border-soft);
+}
+.heartbeat-counts dt {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.heartbeat-counts dd {
+  margin: 8px 0 0;
+  font-size: 1.65rem;
+}
+.heartbeat-counts dd span {
+  color: var(--dim);
+  font-size: 1rem;
+}
+.heartbeat-counts .heartbeat-next-time {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+.heartbeat-status-footer {
+  padding-top: 18px;
+  border-top: 1px solid var(--border-soft);
+  flex-wrap: wrap;
+}
+.heartbeat-status-footer p {
+  font-size: 0.85rem;
+}
+.heartbeat-actions {
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.heartbeat-uncertain {
+  color: var(--accent-hover);
+  margin: 0 0 18px;
+}
+.heartbeat-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+.heartbeat-intro {
+  margin: 8px 0 24px;
+}
+.heartbeat-enable {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-control);
+  border-radius: 9px;
+  cursor: pointer;
+}
+.heartbeat-enable input {
+  margin-top: 4px;
+  accent-color: var(--accent);
+}
+.heartbeat-enable small {
+  display: block;
+  color: var(--muted);
+  margin-top: 5px;
+  line-height: 1.5;
+}
+.heartbeat-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+}
+.heartbeat-field {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+.heartbeat-field-label {
+  font-weight: 600;
+}
+.heartbeat-field input {
+  min-width: 0;
+  width: 100%;
+  padding: 11px 12px;
+  color: var(--text);
+  border: 1px solid var(--border-control);
+  border-radius: 9px;
+  background: var(--field);
+}
+.heartbeat-field small,
+.heartbeat-field-note {
+  color: var(--dim);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.heartbeat-timezone {
+  grid-column: 1 / -1;
+}
+.heartbeat-hours-choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  border: 0;
+  padding: 0;
+  margin: 0 0 24px;
+}
+.heartbeat-hours-choice legend {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.heartbeat-hours-choice label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+.heartbeat-hours-choice input {
+  accent-color: var(--accent);
+}
+.heartbeat-field-note {
+  margin: 12px 0 24px;
+}
+.heartbeat-advanced {
+  padding: 15px;
+  margin: 24px 0;
+  border: 1px solid var(--border-soft);
+  border-radius: 9px;
+  background: var(--field);
+}
+.heartbeat-advanced summary {
+  color: var(--accent-hover);
+  cursor: pointer;
+}
+.heartbeat-advanced .heartbeat-form-grid {
+  margin-top: 22px;
+}
+.heartbeat-save {
+  margin-top: 20px;
+}
+.heartbeat-runs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.heartbeat-runs li {
+  border-top: 1px solid var(--border-soft);
+  padding: 18px 0;
+}
+.heartbeat-run-heading {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.heartbeat-run-heading time {
+  color: var(--dim);
+  font-size: 0.76rem;
+}
+.heartbeat-runs p {
+  color: var(--muted);
+  margin-top: 9px;
+  font-size: 0.86rem;
+}
+.heartbeat-refreshed {
+  color: var(--dim);
+  font-size: 0.78rem;
+  margin-top: 18px;
+}
+@media (max-width: 1000px) {
+  .heartbeat-columns {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .heartbeat-counts,
+  .heartbeat-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .heartbeat-counts {
+    gap: 16px;
+  }
+  .heartbeat-status-heading {
+    flex-wrap: wrap;
+  }
+  .heartbeat-panel,
+  .heartbeat-status {
+    padding: 20px;
+  }
+  .heartbeat-actions .button {
+    flex: 1 1 auto;
+  }
+}

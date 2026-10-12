@@ -1,0 +1,92 @@
+name: project-valerie
+
+# Run the tested Bun image against the remote checkout. Source edits do not
+# rebuild an image; dependency/lockfile changes need bun install on the host.
+x-runtime: &runtime
+  image: ${VALERIE_RUNTIME_IMAGE:-oven/bun:1.3.13}
+  # Caddy uses this same namespace; host loopback is a different network.
+  network_mode: container:tailscale-sidecar
+  user: "${VALERIE_UID:?Set VALERIE_UID to the nonroot source and state owner}:${VALERIE_GID:?Set VALERIE_GID to its group}"
+  restart: unless-stopped
+  read_only: true
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,nodev,size=256m,mode=1777
+  stop_grace_period: 30s
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+
+x-source: &source
+  type: bind
+  source: ${VALERIE_SOURCE_DIR:?Set VALERIE_SOURCE_DIR to the absolute remote checkout}
+  target: /app
+  read_only: true
+  bind:
+    create_host_path: false
+
+services:
+  project-valerie-api:
+    <<: *runtime
+    container_name: project-valerie-api
+    working_dir: /app
+    command: ["bun", "--no-env-file", "--hot", "apps/server/src/index.ts"]
+    # Private credentials are supplied only to the API, never the dashboard container.
+    env_file:
+      - path: ${VALERIE_INTEGRATIONS_FILE:-/home/ember/.config/project-valerie/integrations.env}
+        required: false
+    environment:
+      VALERIE_HOST: 127.0.0.1
+      VALERIE_PORT: "3101"
+      VALERIE_HOST_LABEL: homelab
+      VALERIE_DATABASE: /var/lib/valerie/valerie.sqlite
+      VALERIE_ORIGINS: https://valerie.loafykitten.cafe
+      VALERIE_TIMEZONE: America/Chicago
+      VALERIE_VAULT_DIR: /vault
+    volumes:
+      - *source
+      - type: bind
+        source: ${VALERIE_STATE_DIR:?Set VALERIE_STATE_DIR to the absolute private state directory}
+        target: /var/lib/valerie
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${OBSIDIAN_VAULT_DIR:-/home/ember/.local/share/obsidian/vault}
+        target: /vault
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test: ["CMD", "bun", "--no-env-file", "-e", "try { const r = await fetch('http://127.0.0.1:3101/healthz', { signal: AbortSignal.timeout(3000) }); const h = await r.json(); if (!r.ok || h.ok !== true || h.service !== 'Project Valerie') process.exit(1); } catch { process.exit(1); }"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
+  project-valerie-dashboard:
+    <<: *runtime
+    container_name: project-valerie-dashboard
+    working_dir: /app/apps/dashboard
+    # Native loading avoids Vite writing a bundled config into the read-only checkout.
+    command: ["bun", "--no-env-file", "--bun", "node_modules/vite/bin/vite.js", "--configLoader", "native"]
+    environment:
+      VALERIE_DASHBOARD_PORT: "3100"
+      VALERIE_API_PORT: "3101"
+      VALERIE_DASHBOARD_ORIGIN: https://valerie.loafykitten.cafe
+      VALERIE_VITE_CACHE: /tmp/valerie-vite
+    volumes:
+      - *source
+    depends_on:
+      project-valerie-api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "bun", "--no-env-file", "-e", "try { const page = await fetch('http://127.0.0.1:3100/', { signal: AbortSignal.timeout(3000) }); if (!page.ok || !(await page.text()).includes('/@vite/client')) process.exit(1); const r = await fetch('http://127.0.0.1:3100/healthz', { signal: AbortSignal.timeout(3000) }); const h = await r.json(); if (!r.ok || h.ok !== true || h.service !== 'Project Valerie') process.exit(1); } catch { process.exit(1); }"]
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3

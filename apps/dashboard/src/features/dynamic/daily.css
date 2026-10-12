@@ -1,0 +1,192 @@
+.daily-page-heading {
+  margin-bottom: 20px;
+}
+.daily-main-column {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+.daily-waking-report {
+  margin-top: 20px;
+}
+.daily-waking-report form,
+.daily-subject-form {
+  padding-top: 22px;
+}
+.daily-waking-report > .dynamic-feedback {
+  margin-top: 14px;
+}
+.daily-time-field {
+  display: grid;
+  gap: 12px;
+}
+.daily-time-overlap {
+  font-size: 0.8rem;
+  color: var(--dim);
+}
+.daily-time-overlap summary {
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.dynamic-page .daily-time-overlap select {
+  width: 100%;
+  min-width: 0;
+  padding: 9px;
+  background: var(--field);
+  color: var(--text);
+  border: 1px solid var(--border-control);
+  border-radius: 8px;
+}
+.daily-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+}
+.daily-checkbox input {
+  accent-color: var(--accent);
+}
+.daily-empty {
+  color: var(--dim);
+  padding-top: 14px;
+}
+.daily-subject-list,
+.daily-progress-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+}
+.daily-subject-list > li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid var(--border-soft);
+  padding: 15px 0;
+}
+.daily-subject-list > li > div {
+  flex: 1;
+  min-width: 0;
+}
+.daily-subject-list strong,
+.daily-subject-list small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.daily-subject-list small {
+  color: var(--dim);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  margin-top: 5px;
+}
+.daily-subject-form {
+  padding-bottom: 22px;
+}
+.daily-progress-list > li {
+  border-top: 1px solid var(--border-soft);
+  padding: 17px 0;
+}
+.daily-progress-list h3 {
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+.daily-progress-list p {
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin: 12px 0 5px;
+}
+.daily-progress-list small {
+  font-size: 0.78rem;
+  color: var(--dim);
+  display: block;
+}
+.daily-progress-list > li:last-child {
+  padding-bottom: 0;
+}
+.daily-records,
+.daily-event-editor {
+  margin-top: 22px;
+}
+.daily-report-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0;
+}
+.daily-event-editor .dynamic-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.daily-event-editor .dynamic-fields > .daily-time-field {
+  align-self: start;
+}
+.daily-event-times {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+.daily-event-times dt {
+  font-size: 0.76rem;
+  color: var(--dim);
+}
+.daily-event-times dd {
+  font-size: 0.86rem;
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+.daily-report-quantity {
+  margin: 8px 0;
+}
+.daily-report-basis {
+  color: var(--dim);
+  font-size: 0.8rem;
+}
+.daily-event-actions {
+  margin-top: 15px;
+}
+.daily-windows,
+.daily-merge,
+.daily-versions {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-top: 20px;
+}
+.daily-windows summary,
+.daily-merge summary,
+.daily-versions summary {
+  cursor: pointer;
+}
+.daily-windows dl {
+  display: grid;
+  gap: 14px;
+}
+.daily-windows dt {
+  font-size: 0.8rem;
+  color: var(--dim);
+}
+.daily-windows dd {
+  margin: 5px 0 0;
+}
+.daily-versions .dynamic-actions {
+  align-items: end;
+  margin-top: 14px;
+}
+.daily-versions input {
+  max-width: 160px;
+}
+.dynamic-feature-prompts > .dynamic-tabs {
+  margin-top: 5px;
+}
+@media (max-width: 600px) {
+  .daily-report-filters,
+  .daily-event-editor .dynamic-fields,
+  .daily-event-times {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .daily-subject-list > li {
+    flex-wrap: wrap;
+  }
+  .daily-details .dynamic-heading .badge {
+    white-space: normal;
+    max-width: 100%;
+  }
+}

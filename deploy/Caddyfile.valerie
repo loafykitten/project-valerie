@@ -1,0 +1,16 @@
+# Caddy shares the tailscale-sidecar network namespace. Reserve loopback port 3100
+# in that namespace for Valerie; the host's loopback is a different upstream.
+valerie.loafykitten.cafe {
+	# Ember's current personal nodes and tagged MacBook/homelab tailnet nodes.
+	# Use the TCP peer address, never client-supplied forwarding headers.
+	@ember remote_ip {$VALERIE_ALLOWED_IPS}
+	handle @ember {
+		reverse_proxy 127.0.0.1:3100
+	}
+	handle {
+		respond "Private service." 403
+	}
+	handle_errors {
+		respond "Valerie is currently unavailable on homelab." 503
+	}
+}

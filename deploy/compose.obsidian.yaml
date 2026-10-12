@@ -1,0 +1,39 @@
+name: valerie-obsidian
+
+# This service owns sync only. Valerie receives no vault or credential mount
+# until the vault instructions have been reviewed and memory access is ready.
+services:
+  obsidian-sync:
+    image: local/valerie-obsidian-sync:0.0.14
+    build:
+      context: ./obsidian
+    container_name: valerie-obsidian-sync
+    user: "${OBSIDIAN_UID:-1000}:${OBSIDIAN_GID:-1000}"
+    init: true
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m,mode=1777
+    stop_grace_period: 30s
+    # Authentication and the derived vault key live outside the synced files.
+    # The encryption password is required for initial setup, not this service.
+    volumes:
+      - type: bind
+        source: ${OBSIDIAN_CONFIG_DIR:-/home/ember/.config/obsidian-headless}
+        target: /config/obsidian-headless
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${OBSIDIAN_VAULT_DIR:-/home/ember/.local/share/obsidian/vault}
+        target: /vault
+        bind:
+          create_host_path: false
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: "3"

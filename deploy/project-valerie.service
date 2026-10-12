@@ -1,0 +1,20 @@
+[Unit]
+Description=Project Valerie private companion
+Conflicts=ember-reminder.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.local/share/project-valerie/current
+EnvironmentFile=%h/.config/project-valerie/runtime.env
+ExecStart=%h/.bun/bin/bun apps/server/src/index.ts
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=%h/.local/state/project-valerie
+
+[Install]
+WantedBy=default.target
